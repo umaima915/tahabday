@@ -1,0 +1,420 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Courier New", monospace;
+    background: #050510;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.12), transparent 30%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#00ffff 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px;
+    opacity: 0.25;
+    z-index: -1;
+}
+
+
+/* =========================
+   COMMON
+========================= */
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.small-text {
+    color: #00ffff;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.birthday-section {
+    text-align: center;
+}
+
+.game-ui {
+    width: 100%;
+    max-width: 700px;
+    padding: 40px 20px;
+}
+
+.game-ui h1 {
+    font-size: clamp(45px, 9vw, 85px);
+    color: #00ffff;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 30px #00ffff;
+    letter-spacing: 5px;
+}
+
+.birthday-title {
+    font-size: 24px;
+    color: #ff4df8;
+    margin-top: 10px;
+    text-shadow: 0 0 15px #ff4df8;
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake-area {
+    position: relative;
+    width: 300px;
+    height: 260px;
+    margin: 40px auto 20px;
+}
+
+
+/* Candles */
+
+.candles {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 22px;
+    z-index: 5;
+}
+
+.candle {
+    width: 14px;
+    height: 65px;
+    background: repeating-linear-gradient(
+        45deg,
+        #00ffff 0px,
+        #00ffff 7px,
+        #111 7px,
+        #111 12px
+    );
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+
+/* Flames */
+
+.flame {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background: #ffeb3b;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    top: -25px;
+    left: 0;
+    box-shadow:
+        0 0 10px #ff9800,
+        0 0 25px #ff5722;
+    animation: flame 0.4s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-45deg) scale(1.15);
+    }
+}
+
+
+/* Cake */
+
+.cake {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 230px;
+}
+
+.cake-top {
+    height: 75px;
+    background: linear-gradient(135deg, #ff4df8, #7b2cff);
+    border-radius: 15px 15px 8px 8px;
+    box-shadow:
+        0 0 20px rgba(255, 0, 255, 0.6),
+        inset 0 -10px rgba(0, 0, 0, 0.15);
+}
+
+.cake-bottom {
+    height: 55px;
+    background: #15152b;
+    border: 3px solid #00ffff;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.icing {
+    position: absolute;
+    width: 100%;
+    height: 15px;
+    top: 65px;
+    background: #00ffff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 2px solid #00ffff;
+    background: transparent;
+    color: #00ffff;
+    padding: 15px 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+button:hover {
+    background: #00ffff;
+    color: #050510;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 30px #00ffff;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   CELEBRATION
+========================= */
+
+.celebration-section {
+    display: none;
+    text-align: center;
+}
+
+.celebration-content {
+    max-width: 700px;
+}
+
+.achievement {
+    color: #ffe600;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #ffe600;
+}
+
+.celebration-content h2 {
+    font-size: clamp(45px, 8vw, 80px);
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+.celebration-content h2 span {
+    color: #ff4df8;
+    text-shadow: 0 0 20px #ff4df8;
+}
+
+.celebration-content p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* XP BAR */
+
+.xp-bar {
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+    border: 2px solid #00ffff;
+    margin: 30px auto 10px;
+    padding: 3px;
+}
+
+.xp-progress {
+    width: 0;
+    height: 100%;
+    background: #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+    transition: width 2s ease;
+}
+
+.level-text {
+    color: #00ffff;
+    font-size: 13px !important;
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   PHOTO SECTION
+========================= */
+
+.photo-section {
+    display: none;
+    text-align: center;
+}
+
+.photo-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.photo-content h2 {
+    font-size: 35px;
+    color: #ff4df8;
+    text-shadow: 0 0 15px #ff4df8;
+    margin-bottom: 30px;
+}
+
+
+/* Photo Frame */
+
+.photo-frame {
+    width: 280px;
+    height: 330px;
+    margin: auto;
+    padding: 10px;
+    border: 3px solid #00ffff;
+    background: #0b0b18;
+    box-shadow:
+        0 0 15px #00ffff,
+        0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-caption {
+    margin-top: 20px;
+    color: #00ffff;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-section {
+    display: none;
+    text-align: center;
+}
+
+.message-box {
+    width: 100%;
+    max-width: 700px;
+    padding: 50px 30px;
+    border: 2px solid #ff4df8;
+    background: rgba(10, 10, 30, 0.8);
+    box-shadow:
+        0 0 20px rgba(255, 77, 248, 0.4),
+        inset 0 0 30px rgba(255, 77, 248, 0.05);
+}
+
+.message-box h2 {
+    color: #00ffff;
+    font-size: clamp(30px, 6vw, 50px);
+    margin: 20px 0 30px;
+    text-shadow: 0 0 15px #00ffff;
+}
+
+.message {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.final-text {
+    margin-top: 30px;
+    color: #ff4df8;
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px #ff4df8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .cake-area {
+        transform: scale(0.85);
+        margin: 25px auto;
+    }
+
+    .birthday-title {
+        font-size: 19px;
+    }
+
+    .game-ui {
+        padding: 20px 10px;
+    }
+
+    .photo-frame {
+        width: 240px;
+        height: 290px;
+    }
+
+    .message-box {
+        padding: 35px 20px;
+    }
+
+}
